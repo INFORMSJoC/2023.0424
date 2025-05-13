@@ -1,0 +1,69 @@
+
+PROBLEM STATISTICS
+  Objective sense = Min
+  # Variables = 57
+  # Bin-Int Variables = 0
+  # Constraints = 59
+  # NL Constraints = 47
+  # Linear Constraints = 12
+  # Detected convex constraints = 0
+  # Detected nonlinear terms = 47
+  # Variables involved in nonlinear terms = 10
+  # Potential variables for partitioning = 10
+SUB-SOLVERS USED BY ALPINE
+  NLP local solver = Ipopt
+  MIP solver = Gurobi
+ALPINE CONFIGURATION
+  Maximum iterations (lower-bounding MIPs) =  1
+  Relative global optimality gap = 0.01%
+  Potential variables chosen for partitioning = All
+  Discretization ratio = 10
+  Bound-tightening presolve = false
+PRESOLVE 
+  Doing local search
+
+Feasible solution found during presolve: [0.6719739234762537, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.19125217274763465, 0.6719739248982415, 0.0, 0.6719739267152016, 0.0, 0.0, 0.0, 0.6719739247970011, 0.0, 0.1285164728945863, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.1912521731523501, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.19125217366947966, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.19125217312353585, 0.0, 0.0, 0.0]  :with objective: -4.112954975785013
+
+  Local solver returns a feasible point with value -4.113
+
+  Fixed 8 discretization points based on bounding heuristic
+
+
+Initial guess for SP: [0.31935257467839784, 0.6719739252925566, 0.0, 0.6806474253216022, 0.0, 0.31935257467839784, 0.0, 0.9506479359490247, 0.0, 0.31935257467839784, 0.0, 0.31935257467839784, 0.0, 0.31935257467839784, 0.0, 0.6806474253216022, 0.0, 0.049352064050975246, 0.1912521764462801, 0.31935257467839784]
+
+disc_lower_bound: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+disc_upper_bound: [1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0]
+
+fix_disc_point: [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0]
+
+
+Running Proximal Bundle Method MPBNGC.
+Ending SP solves because bound converged with best_obj: -4.112954975785013, bound: -4.112954909364748
+MPBNGC terminated with `Failure in function or subgradient calculations (assigned by the user).`
+Completed 0 restarts.  stalling_restart = false.  num_func_eval = 1  best_disc_bound: -4.112954909364748
+
+Best found disc_points using mpbngc (without postprocessing): [0.3193525746783978, 0.6719739252925566, 0.0, 0.6806474253216022, 0.0, 0.3193525746783978, 0.0, 0.9506479359490247, 0.0, 0.3193525746783978, 0.0, 0.3193525746783978, 0.0, 0.3193525746783978, 0.0, 0.6806474253216022, 0.0, 0.0493520640509752, 0.1912521764462801, 0.3193525746783978]  with bound: -4.112954909364748  in time: 4.13s
+
+  Starting postprocessing to try and eliminate partitioning points that are not useful...
+Time for postprocessing: 1.72s
+
+
+Best found disc_points using mpbngc (with postprocessing): [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0493520640509752, 0.0, 0.1912521764462801]  with bound: -4.112954909364748  in time: 5.86s. Excluded 18 discretization points
+  Completed presolve in 13.95s
+LOWER-BOUNDING ITERATIONS
+====================================================================================================
+| Iter   | Incumbent       | Best Incumbent      | Lower Bound        | Gap (%)         | Time      
+| finish | -4.113          | -4.113              | -4.113             | 0.0             | 14.06s           
+Final UBD: -4.112954975785013
+Final LBD: -4.112954909364748
+====================================================================================================
+
+*** Alpine ended with status OPTIMAL ***
+
+ Total time for local solves: 3.14s
+
+ Total time for solving max-min problems: 8.17s
+
+ Total time excluding max-min time: 14.06s
+

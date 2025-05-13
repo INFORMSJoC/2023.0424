@@ -1,0 +1,72 @@
+
+PROBLEM STATISTICS
+  Objective sense = Min
+  # Variables = 57
+  # Bin-Int Variables = 0
+  # Constraints = 59
+  # NL Constraints = 47
+  # Linear Constraints = 12
+  # Detected convex constraints = 0
+  # Detected nonlinear terms = 47
+  # Variables involved in nonlinear terms = 10
+  # Potential variables for partitioning = 10
+SUB-SOLVERS USED BY ALPINE
+  NLP local solver = Ipopt
+  MIP solver = Gurobi
+ALPINE CONFIGURATION
+  Maximum iterations (lower-bounding MIPs) =  1
+  Relative global optimality gap = 0.01%
+  Potential variables chosen for partitioning = All
+  Discretization ratio = 10
+  Bound-tightening presolve = false
+PRESOLVE 
+  Doing local search
+
+Feasible solution found during presolve: [0.5000620645808136, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.6415431682708543, 0.0, 1.0, 0.0, 0.0, 0.5000620684514321, 0.0, 0.0, 0.0, 0.32081140124323976, 0.0, 0.500062044949297, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6415431732365757, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6415431430850498, 0.0, 0.0, 0.0]  :with objective: -0.9270229125369798
+
+  Local solver returns a feasible point with value -0.927
+
+  Fixed 6 discretization points based on bounding heuristic
+
+
+Initial guess for SP: [0.4366513310332961, 0.5230368523876299, 0.06695738351625447, 0.4366513310332961, 0.0, 0.0, 0.0, 0.7819066425001651, 0.033443068972004386, 0.21809335749983494, 0.0, 0.218093357499835, 0.0, 0.218093357499835, 0.5633486689667039, 0.801708131625502, 0.0, 0.218093357499835, 0.5633486689667039, 0.9330426164837455]
+
+disc_lower_bound: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+disc_upper_bound: [1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0]
+
+fix_disc_point: [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0]
+
+
+Running Proximal Bundle Method MPBNGC.
+Ending SP solves because bound converged with best_obj: -0.9270229125369798, bound: -0.9270235705269845
+MPBNGC terminated with `Failure in function or subgradient calculations (assigned by the user).`
+Completed 0 restarts.  stalling_restart = false.  num_func_eval = 4  best_disc_bound: -0.9270235705269845
+
+Best found disc_points using mpbngc (without postprocessing): [0.4366513310332961, 0.5000266193299119, 0.0669573835162545, 0.4366513310332961, 0.0, -2.0e-16, 0.0, 0.7819066425001651, 0.0334430689720044, 0.218093357499835, 0.0, 0.218093357499835, 0.0, 0.218093357499835, 0.5648418973208669, 0.7968473426790033, 0.0, 0.218093357499835, 0.5633486689667039, 0.9330426164837456]  with bound: -0.9270235705269844  in time: 5.2s
+
+  Starting postprocessing to try and eliminate partitioning points that are not useful...
+Time for postprocessing: 4.15s
+
+
+Best found disc_points using mpbngc (with postprocessing): [0.0, 0.5000266193299119, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5648418973208669, 0.0, 0.0, 0.5633486689667039, 0.9330426164837456]  with bound: -0.9270235705269844  in time: 9.38s. Excluded 16 discretization points
+  Completed presolve in 14.03s
+LOWER-BOUNDING ITERATIONS
+====================================================================================================
+| Iter   | Incumbent       | Best Incumbent      | Lower Bound        | Gap (%)         | Time      
+| finish | -0.927          | -0.927              | -0.927             | 0.0             | 14.12s           
+Final UBD: -0.9270229125369798
+Final LBD: -0.9270235705269845
+====================================================================================================
+
+*** Alpine ended with status OPTIMAL ***
+
+ Total time for local solves: 3.17s
+
+ Total time for solving max-min problems: 11.66s
+
+ Total time excluding max-min time: 14.12s
+
+ Iter:   0  Nfun:   1  f1(x) = 0.9278969         Eps = 0.5563013E-03
+ Iter:   1  Nfun:   2  f1(x) = 0.9271285         Eps = 0.9035761E-04
+ Iter:   2  Nfun:   3  f1(x) = 0.9270879         Eps = 0.6392003E-04

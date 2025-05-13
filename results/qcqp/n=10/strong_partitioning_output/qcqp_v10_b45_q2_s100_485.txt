@@ -1,0 +1,81 @@
+
+PROBLEM STATISTICS
+  Objective sense = Min
+  # Variables = 57
+  # Bin-Int Variables = 0
+  # Constraints = 59
+  # NL Constraints = 47
+  # Linear Constraints = 12
+  # Detected convex constraints = 0
+  # Detected nonlinear terms = 47
+  # Variables involved in nonlinear terms = 10
+  # Potential variables for partitioning = 10
+SUB-SOLVERS USED BY ALPINE
+  NLP local solver = Ipopt
+  MIP solver = Gurobi
+ALPINE CONFIGURATION
+  Maximum iterations (lower-bounding MIPs) =  1
+  Relative global optimality gap = 0.01%
+  Potential variables chosen for partitioning = All
+  Discretization ratio = 10
+  Bound-tightening presolve = false
+PRESOLVE 
+  Doing local search
+
+Feasible solution found during presolve: [0.6719739697808554, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.191252409701872, 0.671973965948137, 0.0, 0.6719739751762159, 0.0, 0.0, 0.0, 0.6719739676600631, 0.0, 0.12851664097752152, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.19125240861103118, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.1912524112374608, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.19125240909826732, 0.0, 0.0, 0.0]  :with objective: -2.2446143895291546
+
+  Local solver returns a feasible point with value -2.2446
+
+  Fixed 11 discretization points based on bounding heuristic
+
+
+Initial guess for SP: [0.7046245896281258, 0.7474438693860854, 0.0, 0.7776099573506742, 0.0, 0.0, 0.0, 0.0, 0.1158823577264266, 0.22239004264932585, 0.0, 0.0, 0.0, 0.22239004264932585, 0.0, 0.7776099573506742, 0.0, 0.0, 0.3724152185222209, 0.7776099573506742]
+
+disc_lower_bound: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+disc_upper_bound: [1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0]
+
+fix_disc_point: [0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0]
+
+
+Running Proximal Bundle Method MPBNGC.
+Ending SP solves because bound converged with best_obj: -2.2446143895291546, bound: -2.2446158963963363
+MPBNGC terminated with `Failure in function or subgradient calculations (assigned by the user).`
+Completed 0 restarts.  stalling_restart = false.  num_func_eval = 21  best_disc_bound: -2.2446158963963363
+
+Best found disc_points using mpbngc (without postprocessing): [0.6701635395099305, 0.747443869386085, 0.0, 0.7776099573506742, 1.1e-15, 1.2e-15, 0.0, 0.0, 0.0007400860697827, 0.2195342412375746, -8.0e-16, -1.1e-15, -0.0, 0.2223900426493258, 0.0, 0.7776099573506742, 0.0, -2.5e-15, 0.1931369585003609, 0.7776099573506742]  with bound: -2.2446158963963363  in time: 10.77s
+
+  Starting postprocessing to try and eliminate partitioning points that are not useful...
+Time for postprocessing: 2.16s
+
+
+Best found disc_points using mpbngc (with postprocessing): [0.6701635395099305, 0.747443869386085, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0007400860697827, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1931369585003609, 0.7776099573506742]  with bound: -2.2446158963963363  in time: 12.95s. Excluded 15 discretization points
+  Completed presolve in 13.69s
+LOWER-BOUNDING ITERATIONS
+====================================================================================================
+| Iter   | Incumbent       | Best Incumbent      | Lower Bound        | Gap (%)         | Time      
+| finish | -2.2446         | -2.2446             | -2.2446            | 0.0             | 13.86s           
+Final UBD: -2.2446143895291546
+Final LBD: -2.2446158963963363
+====================================================================================================
+
+*** Alpine ended with status OPTIMAL ***
+
+ Total time for local solves: 3.02s
+
+ Total time for solving max-min problems: 15.14s
+
+ Total time excluding max-min time: 13.86s
+
+ Iter:   0  Nfun:   1  f1(x) =  2.249105         Eps = 0.1569626E-02
+ Iter:   1  Nfun:   2  f1(x) =  2.247836         Eps = 0.4860596E-03
+ Iter:   2  Nfun:   3  f1(x) =  2.247022         Eps = 0.8682389E-03
+ Iter:   3  Nfun:   4  f1(x) =  2.245617         Eps = 0.5500617E-03
+ Iter:   4  Nfun:   6  f1(x) =  2.245617         Eps = 0.3185089E-03
+ Iter:   5  Nfun:   8  f1(x) =  2.245155         Eps = 0.3975352E-03
+ Iter:   6  Nfun:  10  f1(x) =  2.244838         Eps = 0.8967344E-04
+ Iter:   7  Nfun:  12  f1(x) =  2.244838         Eps = 0.1621970E-03
+ Iter:   8  Nfun:  14  f1(x) =  2.244762         Eps = 0.2623040E-03
+ Iter:   9  Nfun:  16  f1(x) =  2.244762         Eps = 0.2650668E-03
+ Iter:  10  Nfun:  17  f1(x) =  2.244622         Eps = 0.2304841E-04
+ Iter:  11  Nfun:  19  f1(x) =  2.244618         Eps = 0.1110515E-04

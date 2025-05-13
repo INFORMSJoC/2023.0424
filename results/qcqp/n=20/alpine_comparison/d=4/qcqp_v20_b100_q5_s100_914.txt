@@ -1,0 +1,351 @@
+┌ Warning:   Warning: Alpine is terminating because the variable partitions did not change in the current iteration. Problem may be badly scaled.
+└ @ Alpine ~/.julia/dev/Alpine/src/amp.jl:372
+
+PROBLEM STATISTICS
+  Objective sense = Min
+  # Variables = 57
+  # Bin-Int Variables = 0
+  # Constraints = 59
+  # NL Constraints = 47
+  # Linear Constraints = 12
+  # Detected convex constraints = 0
+  # Detected nonlinear terms = 47
+  # Variables involved in nonlinear terms = 10
+  # Potential variables for partitioning = 10
+SUB-SOLVERS USED BY ALPINE
+  NLP local solver = Ipopt
+  MIP solver = Gurobi
+ALPINE CONFIGURATION
+  Maximum iterations (lower-bounding MIPs) =  99
+  Relative global optimality gap = 0.01%
+  Potential variables chosen for partitioning = All
+  Discretization ratio = 10
+  Bound-tightening presolve = false
+PRESOLVE 
+  Doing local search
+
+Feasible solution found during presolve: [0.6719739235810351, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.1912521844150211, 0.6719739225862605, 0.0, 0.6719739256372559, 0.0, 0.0, 0.0, 0.6719739229571099, 0.0, 0.1285164807548054, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.1912521841318958, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.19125218500024724, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.19125218423744417, 0.0, 0.0, 0.0]  :with objective: -1.6450459797172714
+
+  Local solver returns a feasible point with value -1.645
+disc:  1  :[0.0, 0.5719739235810352, 0.7719739235810351, 1.0]
+disc:  2  :[0.0, 0.9, 1.0]
+disc:  3  :[0.0, 0.1, 1.0]
+disc:  4  :[0.0, 0.9, 1.0]
+disc:  5  :[0.0, 0.1, 1.0]
+disc:  6  :[0.0, 0.1, 1.0]
+disc:  7  :[0.0, 0.1, 1.0]
+disc:  8  :[0.0, 0.9, 1.0]
+disc:  9  :[0.0, 0.1, 1.0]
+disc:  10  :[0.0, 0.09125218441502109, 0.2912521844150211, 1.0]
+  Completed presolve in 5.74s
+LOWER-BOUNDING ITERATIONS
+====================================================================================================
+| Iter   | Incumbent       | Best Incumbent      | Lower Bound        | Gap (%)         | Time      
+| 1      | -1.645          | -1.645              | -1.6471            | 0.128           | 13.65s           
+UBD at iter 1: -1.6450459797172714
+LBD at iter 1: -1.6471493403554474
+| finish | -1.645          | -1.645              | -1.6451            | 0.005           | 14.33s           
+Final UBD: -1.6450459797174808
+Final LBD: -1.64513011295679
+====================================================================================================
+
+*** Alpine ended with status OPTIMAL ***
+
+ Total time for local solves: 3.1s
+
+ Total time for solving max-min problems: 0.0s
+
+ Total time excluding max-min time: 14.33s
+
+
+
+
+
+PROBLEM STATISTICS
+  Objective sense = Min
+  # Variables = 57
+  # Bin-Int Variables = 0
+  # Constraints = 59
+  # NL Constraints = 47
+  # Linear Constraints = 12
+  # Detected convex constraints = 0
+  # Detected nonlinear terms = 47
+  # Variables involved in nonlinear terms = 10
+  # Potential variables for partitioning = 10
+SUB-SOLVERS USED BY ALPINE
+  NLP local solver = Ipopt
+  MIP solver = Gurobi
+ALPINE CONFIGURATION
+  Maximum iterations (lower-bounding MIPs) =  99
+  Relative global optimality gap = 0.01%
+  Potential variables chosen for partitioning = All
+  Discretization ratio = 10
+  Bound-tightening presolve = false
+PRESOLVE 
+  Doing local search
+
+Feasible solution found during presolve: [0.6719739235810351, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.1912521844150211, 0.6719739225862605, 0.0, 0.6719739256372559, 0.0, 0.0, 0.0, 0.6719739229571099, 0.0, 0.1285164807548054, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.1912521841318958, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.19125218500024724, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.19125218423744417, 0.0, 0.0, 0.0]  :with objective: -1.6450459797172714
+
+  Local solver returns a feasible point with value -1.645
+Added the following user-specified partitions:
+var 1: [0.0, 1.0]
+var 2: [0.0, 1.0]
+var 3: [0.0, 1.0]
+var 4: [0.0, 1.0]
+var 5: [0.0, 1.0]
+var 6: [0.0, 1.0]
+var 7: [0.0, 1.0]
+var 8: [0.0, 1.0]
+var 9: [0.0, 1.0]
+var 10: [0.0, 0.191252, 0.5, 1.0]
+  Completed presolve in 0.13s
+LOWER-BOUNDING ITERATIONS
+====================================================================================================
+| Iter   | Incumbent       | Best Incumbent      | Lower Bound        | Gap (%)         | Time      
+| finish | -1.645          | -1.645              | -1.645             | 0.0             | 0.2s             
+Final UBD: -1.6450459797172714
+Final LBD: -1.6450459784733624
+====================================================================================================
+
+*** Alpine ended with status OPTIMAL ***
+
+ Total time for local solves: 0.04s
+
+ Total time for solving max-min problems: 0.0s
+
+ Total time excluding max-min time: 0.2s
+
+
+
+
+
+PROBLEM STATISTICS
+  Objective sense = Min
+  # Variables = 125
+  # Bin-Int Variables = 0
+  # Constraints = 129
+  # NL Constraints = 105
+  # Linear Constraints = 24
+  # Detected convex constraints = 0
+  # Detected nonlinear terms = 105
+  # Variables involved in nonlinear terms = 20
+  # Potential variables for partitioning = 20
+SUB-SOLVERS USED BY ALPINE
+  NLP local solver = Ipopt
+  MIP solver = Gurobi
+ALPINE CONFIGURATION
+  Maximum iterations (lower-bounding MIPs) =  99
+  Relative global optimality gap = 0.01%
+  Potential variables chosen for partitioning = All
+  Discretization ratio = 10
+  Bound-tightening presolve = false
+PRESOLVE 
+  Doing local search
+
+Feasible solution found during presolve: [0.0, 0.0, 1.0, 0.0, 1.0, 0.6723863253885921, 1.0, 1.0, 1.0, 0.0, 0.0, 0.1963468773394068, 0.0, 0.0, 0.005395887981212203, 0.49780984501117254, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.19634687589162458, 0.49780984134052475, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0053958879943993825, 0.0, 0.0, 0.6723863250187002, 0.6723863267017639, 0.13202095535576838, 0.0, 0.0, 0.003628121291895737, 0.33472053242932687, 0.0, 0.0, 0.0, 0.0, 0.19634687723139288, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.005395887999427034, 0.0, 0.0, 0.0, 0.0, 0.19634687772287265, 0.0, 0.005395887991750383, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0010594657555842574, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.002686126159624886, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0]  :with objective: -4.3506894477286515
+
+  Local solver returns a feasible point with value -4.3507
+disc:  1  :[0.0, 0.1, 1.0]
+disc:  2  :[0.0, 0.1, 1.0]
+disc:  3  :[0.0, 0.9, 1.0]
+disc:  4  :[0.0, 0.1, 1.0]
+disc:  5  :[0.0, 0.9, 1.0]
+disc:  6  :[0.0, 0.5723863253885921, 0.7723863253885921, 1.0]
+disc:  7  :[0.0, 0.9, 1.0]
+disc:  8  :[0.0, 0.9, 1.0]
+disc:  9  :[0.0, 0.9, 1.0]
+disc:  10  :[0.0, 0.1, 1.0]
+disc:  11  :[0.0, 0.1, 1.0]
+disc:  12  :[0.0, 0.0963468773394068, 0.2963468773394068, 1.0]
+disc:  13  :[0.0, 0.1, 1.0]
+disc:  14  :[0.0, 0.1, 1.0]
+disc:  15  :[0.0, 0.1053958879812122, 1.0]
+disc:  16  :[0.0, 0.39780984501117256, 0.5978098450111725, 1.0]
+disc:  17  :[0.0, 0.1, 1.0]
+disc:  18  :[0.0, 0.1, 1.0]
+disc:  19  :[0.0, 0.1, 1.0]
+disc:  20  :[0.0, 0.1, 1.0]
+  Completed presolve in 0.15s
+LOWER-BOUNDING ITERATIONS
+====================================================================================================
+| Iter   | Incumbent       | Best Incumbent      | Lower Bound        | Gap (%)         | Time      
+| 1      | -4.3507         | -4.3507             | -4.8896            | 12.386          | 1.47s            
+UBD at iter 1: -4.3506894477286515
+LBD at iter 1: -4.889553809241356
+| 2      | -4.3507         | -4.3507             | -4.5058            | 3.565           | 4.4s             
+| 3      | -4.3507         | -4.3507             | -4.3644            | 0.316           | 16.51s           
+| 4      | -4.3507         | -4.3507             | -4.3558            | 0.118           | 29.51s           
+| finish | -4.3507         | -4.3549             | -4.3551            | 0.003           | 54.3s            
+Final UBD: -4.354947818610001
+Final LBD: -4.3550817496397904
+====================================================================================================
+
+*** Alpine ended with status OPTIMAL ***
+
+ Total time for local solves: 1.08s
+
+ Total time for solving max-min problems: 0.0s
+
+ Total time excluding max-min time: 54.3s
+
+objective value: -4.354947818610001
+objective bound: -4.3550817496397904
+x_opt: [0.08639973722974616, 0.0, 0.3536841449655346, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.2850192169639577, 0.0, 0.0, 0.057404112712216904, 0.0, 0.0, 0.0, 0.0]
+solution time: 54.3002142906189
+
+
+
+
+PROBLEM STATISTICS
+  Objective sense = Min
+  # Variables = 125
+  # Bin-Int Variables = 0
+  # Constraints = 129
+  # NL Constraints = 105
+  # Linear Constraints = 24
+  # Detected convex constraints = 0
+  # Detected nonlinear terms = 105
+  # Variables involved in nonlinear terms = 20
+  # Potential variables for partitioning = 20
+SUB-SOLVERS USED BY ALPINE
+  NLP local solver = Ipopt
+  MIP solver = Gurobi
+ALPINE CONFIGURATION
+  Maximum iterations (lower-bounding MIPs) =  99
+  Relative global optimality gap = 0.01%
+  Potential variables chosen for partitioning = All
+  Discretization ratio = 10
+  Bound-tightening presolve = false
+PRESOLVE 
+  Doing local search
+
+Feasible solution found during presolve: [0.0, 0.0, 1.0, 0.0, 1.0, 0.6723863253885921, 1.0, 1.0, 1.0, 0.0, 0.0, 0.1963468773394068, 0.0, 0.0, 0.005395887981212203, 0.49780984501117254, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.19634687589162458, 0.49780984134052475, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0053958879943993825, 0.0, 0.0, 0.6723863250187002, 0.6723863267017639, 0.13202095535576838, 0.0, 0.0, 0.003628121291895737, 0.33472053242932687, 0.0, 0.0, 0.0, 0.0, 0.19634687723139288, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.005395887999427034, 0.0, 0.0, 0.0, 0.0, 0.19634687772287265, 0.0, 0.005395887991750383, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0010594657555842574, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.002686126159624886, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0]  :with objective: -4.3506894477286515
+
+  Local solver returns a feasible point with value -4.3507
+Added the following user-specified partitions:
+var 1: [0.0, 0.085435, 0.119759, 0.763097, 1.0]
+var 2: [0.0, 1.0]
+var 3: [0.0, 0.353684, 0.720729, 1.0]
+var 4: [0.0, 0.236842, 1.0]
+var 5: [0.0, 0.763158, 1.0]
+var 6: [0.0, 0.023892, 0.236842, 0.662144, 1.0]
+var 7: [0.0, 1.0]
+var 8: [0.0, 0.770762, 1.0]
+var 9: [0.0, 0.47995, 1.0]
+var 10: [0.0, 1.0]
+var 11: [0.0, 0.131579, 1.0]
+var 12: [0.0, 0.20462, 0.323915, 0.709486, 1.0]
+var 13: [0.0, 0.006605, 0.120762, 0.28512, 1.0]
+var 14: [0.0, 0.127796, 0.236842, 1.0]
+var 15: [0.0, 0.084461, 0.236842, 1.0]
+var 16: [0.0, 0.057404, 0.230493, 0.508995, 1.0]
+var 17: [0.0, 0.111122, 0.243805, 1.0]
+var 18: [0.0, 1.0]
+var 19: [0.0, 0.026356, 1.0]
+var 20: [0.0, 1.0]
+  Completed presolve in 0.15s
+LOWER-BOUNDING ITERATIONS
+====================================================================================================
+| Iter   | Incumbent       | Best Incumbent      | Lower Bound        | Gap (%)         | Time      
+| 1      | -4.3507         | -4.3507             | -4.3549            | 0.098           | 1.4s             
+UBD at iter 1: -4.3506894477286515
+LBD at iter 1: -4.354947749471262
+| 2      | -4.3507         | -4.3507             | -4.3549            | 0.098           | 3.9s             
+| 3      | -4.3507         | -4.3507             | -4.3549            | 0.098           | 15.83s           
+| 4      | -4.3507         | -4.3507             | -4.3549            | 0.098           | 28.23s           
+| 5      | -4.3507         | -4.3507             | -4.3549            | 0.098           | 51.85s           
+| 6      | -4.3507         | -4.3507             | -4.3549            | 0.098           | 83.33s           
+| finish | -4.3507         | -4.3507             | -4.3549            | 0.098           | 115.84s          
+Final UBD: -4.350689447728683
+Final LBD: -4.354947749471262
+====================================================================================================
+
+*** Alpine ended with status OTHER_LIMIT ***
+
+ Total time for local solves: 1.61s
+
+ Total time for solving max-min problems: 0.0s
+
+ Total time excluding max-min time: 115.84s
+
+objective value: -4.350689447728683
+objective bound: -4.354947749471262
+x_opt: [0.0, 0.0, 1.0, 0.0, 1.0, 0.672386325388598, 1.0, 1.0, 1.0, 0.0, 0.0, 0.19634687733934564, 0.0, 0.0, 0.005395887981134982, 0.497809845011213, 0.0, 0.0, 0.0, 0.0]
+solution time: 115.83734679222107
+
+
+
+
+PROBLEM STATISTICS
+  Objective sense = Min
+  # Variables = 125
+  # Bin-Int Variables = 0
+  # Constraints = 129
+  # NL Constraints = 105
+  # Linear Constraints = 24
+  # Detected convex constraints = 0
+  # Detected nonlinear terms = 105
+  # Variables involved in nonlinear terms = 20
+  # Potential variables for partitioning = 20
+SUB-SOLVERS USED BY ALPINE
+  NLP local solver = Ipopt
+  MIP solver = Gurobi
+ALPINE CONFIGURATION
+  Maximum iterations (lower-bounding MIPs) =  99
+  Relative global optimality gap = 0.01%
+  Potential variables chosen for partitioning = All
+  Discretization ratio = 10
+  Bound-tightening presolve = false
+PRESOLVE 
+  Doing local search
+
+Feasible solution found during presolve: [0.0, 0.0, 1.0, 0.0, 1.0, 0.6723863253885921, 1.0, 1.0, 1.0, 0.0, 0.0, 0.1963468773394068, 0.0, 0.0, 0.005395887981212203, 0.49780984501117254, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.19634687589162458, 0.49780984134052475, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0053958879943993825, 0.0, 0.0, 0.6723863250187002, 0.6723863267017639, 0.13202095535576838, 0.0, 0.0, 0.003628121291895737, 0.33472053242932687, 0.0, 0.0, 0.0, 0.0, 0.19634687723139288, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.005395887999427034, 0.0, 0.0, 0.0, 0.0, 0.19634687772287265, 0.0, 0.005395887991750383, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0010594657555842574, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.002686126159624886, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0]  :with objective: -4.3506894477286515
+
+  Local solver returns a feasible point with value -4.3507
+Added the following user-specified partitions:
+var 1: [0.0, 0.093652, 0.742648, 1.0]
+var 2: [0.0, 1.0]
+var 3: [0.0, 0.361193, 0.6991, 1.0]
+var 4: [0.0, 1.0]
+var 5: [0.0, 0.749269, 1.0]
+var 6: [0.0, 0.037827, 0.2512, 0.603816, 1.0]
+var 7: [0.0, 0.750438, 1.0]
+var 8: [0.0, 0.683479, 1.0]
+var 9: [0.0, 0.650678, 1.0]
+var 10: [0.0, 1.0]
+var 11: [0.0, 0.078947, 1.0]
+var 12: [0.0, 0.192719, 0.315774, 0.787457, 1.0]
+var 13: [0.0, 0.010195, 0.092516, 0.170561, 0.285017, 1.0]
+var 14: [0.0, 0.211942, 1.0]
+var 15: [0.0, 0.07034, 0.249758, 1.0]
+var 16: [0.0, 0.101246, 0.291267, 0.502339, 1.0]
+var 17: [0.0, 0.05183, 0.244972, 1.0]
+var 18: [0.0, 1.0]
+var 19: [0.0, 0.011624, 1.0]
+var 20: [0.0, 1.0]
+  Completed presolve in 0.16s
+LOWER-BOUNDING ITERATIONS
+====================================================================================================
+| Iter   | Incumbent       | Best Incumbent      | Lower Bound        | Gap (%)         | Time      
+| 1      | -4.3507         | -4.3507             | -4.3629            | 0.28            | 1.62s            
+UBD at iter 1: -4.3506894477286515
+LBD at iter 1: -4.36287820085553
+| 2      | -4.3507         | -4.3507             | -4.3576            | 0.159           | 3.63s            
+| finish | -4.3507         | -4.3549             | -4.3552            | 0.005           | 9.13s            
+Final UBD: -4.354947638401191
+Final LBD: -4.355182470808062
+====================================================================================================
+
+*** Alpine ended with status OPTIMAL ***
+
+ Total time for local solves: 0.83s
+
+ Total time for solving max-min problems: 0.0s
+
+ Total time excluding max-min time: 9.13s
+
+objective value: -4.354947638401191
+objective bound: -4.355182470808062
+x_opt: [0.08640036966361363, 0.0, 0.353683459405511, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.2850169829316539, 0.0, 0.0, 0.05740370144850596, 0.0, 0.0, 0.0, 0.0]
+solution time: 9.129808187484741
+
