@@ -43,7 +43,7 @@ To cite the contents of this repository, please cite both the paper and this rep
 
 This repository provides the following resources for reproducing the results in our paper:
 
-- Test problems used in the study (`data` folder).
+- Codes for generating the test problems used in the study (`data` folder).
 - Source code for Strong Partitioning (`src` folder).
 - Sample scripts for running experiments (`scripts` folder).
 - Raw experimental results (`results` folder).
@@ -78,5 +78,5 @@ For questions or feedback, please contact:
 - Harsha Nagarajan: harsha@lanl.gov
 - Deepjyoti Deka: deepj87@mit.edu
 
-Alternatively, you may open an
-[issue on GitHub](https://github.com/rohitkannan/2023.0424/issues/new).
+Alternatively, please open an
+[issue on the original GitHub repository](https://github.com/rohitkannan/qcqp-sp-ml/issues/new) instead of this one.

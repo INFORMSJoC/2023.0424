@@ -1,5 +1,5 @@
 # Random families of nonconvex QCQPs
-Scripts for generating a family of random non-convex quadratically constrained quadratic program (QCQP) instances, as described in Section 6.1 of the following paper:
+Scripts for generating a family of random non-convex quadratically constrained quadratic program (QCQP) instances, as described in the paper:
 ```bibtex
 @article{kannan2025strong,
   author = {Kannan, Rohit and Nagarajan, Harsha and Deka, Deepjyoti},
@@ -27,4 +27,4 @@ python3 generate_pooling_instances.py --numInstances 1000
 Additional data files for generating the pooling instances can be found within the `pooling` folder. These data files were generated using the scripts [here](https://github.com/poolinginstances/poolinginstances).
 
 
-The `bilinear`, `qcqp`, and `pooling` folders contain the Julia instances used in the paper along with their best-found solutions and optimal objective values. These folders also include the termwise McCormick relaxations of the instances and supporting JSON files.
+The `bilinear`, `qcqp`, and `pooling` folders contain the best-found solutions and optimal objective values for these instances.

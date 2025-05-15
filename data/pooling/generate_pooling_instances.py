@@ -11,7 +11,10 @@ args = parser.parse_args()
 numInstances = int(args.numInstances)
 
 instances_path = "./pooling_instances/"
-os.mkdir(instances_path)
+pooling_path = instances_path + "pooling/"
+json_path = instances_path + "json/"
+os.makedirs(pooling_path, exist_ok=True)
+os.makedirs(json_path, exist_ok=True)
 
 # random seed for instances
 random.seed(8446) 
@@ -285,8 +288,8 @@ for j in range(num_j):
 
 for inst in range(numInstances):
 
-	output_file = instances_path + "random_schweiger_c15_e150_q1_" + str(inst+1) + ".jl"
-	json_file = instances_path + "random_schweiger_c15_e150_q1_" + str(inst+1) + ".json"
+	output_file = pooling_path + "random_schweiger_c15_e150_q1_" + str(inst+1) + ".jl"
+	json_file = json_path + "random_schweiger_c15_e150_q1_" + str(inst+1) + ".json"
 
 	theta_specs = np.random.rand(num_inputs, num_specs)
 	specs_in = [[0.0 for k in range(num_specs)] for i in range(num_inputs)]
@@ -302,7 +305,6 @@ for inst in range(numInstances):
 
 	# Write to file. Convert to one indexing before creating Julia input
 	f = open(output_file, "w")
-	f.write("using SparseArrays \n\n")
 
 	f.write("num_i = " + str(num_i) + "\n")
 	f.write("num_l = " + str(num_l) + "\n")
@@ -370,38 +372,7 @@ for inst in range(numInstances):
 	f.write("cost_lj = sparse(cost_lj_rows, cost_lj_cols, cost_lj_vals) \n\n")
 
 	f.write("gamma_low = " + str(gamma_low) + "\n\n")
-	f.write("gamma_up = " + str(gamma_up) + "\n\n\n\n")
-
-
-	f.write("# ----- Variables ----- #\n")
-	f.write("@variables(m, begin \n")
-	f.write("	0 <= w[(i,l,j) in arcs_ilj] <= min(cap_i[i],cap_l[l],cap_j[j]) \n")
-	f.write("	0 <= x_il[(i,l) in arcs_il] <= min(cap_i[i],cap_l[l]) \n")
-	f.write("	0 <= x_lj[(l,j) in arcs_lj] <= min(cap_l[l],cap_j[j]) \n")
-	f.write("	0 <= x_ij[(i,j) in arcs_ij] <= min(cap_i[i],cap_j[j]) \n")
-	f.write("	0 <= q[arcs_il] <= 1 \n")
-	f.write("end) \n\n\n")
-
-
-	f.write("# ----- Constraints ----- #\n")
-	f.write("@constraints(m, begin \n")
-	f.write("	capi[i=1:num_i], sum(x_ij[(i,j)] for j in outputs_from_input[i]) + sum(x_il[(i,l)] for l in pools_from_input[i]) <= cap_i[i] \n\n")
-	f.write("	capl[l=1:num_l], sum(x_lj[(l,j)] for j in outputs_from_pool[l]) <= cap_l[l] \n\n")
-	f.write("	capj[j=1:num_j], sum(x_ij[(i,j)] for i in inputs_to_output[j]) + sum(x_lj[(l,j)] for l in pools_to_output[j]) <= cap_j[j] \n\n")
-	f.write("	sumfrac[l=1:num_l], sum(q[(i,l)] for i in inputs_to_pool[l]) == 1 \n\n")
-	f.write("	eq1[(i,l) in arcs_il], x_il[(i,l)] == sum(w[(i,l,j)] for j in outputs_from_pool[l]) \n\n")
-	f.write("    specdown[k=1:num_k, j=1:num_j], sum(gamma_low[i][j][k]*w[(i,l,j)] for (i,l) in inputs_pools_to_output[j]) + sum(gamma_low[i][j][k]*x_ij[(i,j)] for i in inputs_to_output[j]) >= 0 \n\n")
-	f.write("	specup[k=1:num_k, j=1:num_j], sum(gamma_up[i][j][k]*w[(i,l,j)] for (i,l) in inputs_pools_to_output[j]) + sum(gamma_up[i][j][k]*x_ij[(i,j)] for i in inputs_to_output[j]) <= 0 \n\n")
-	f.write("	rlt1[(l,j) in arcs_lj], sum(w[(i,l,j)] for i in inputs_to_pool[l]) == x_lj[(l,j)] \n\n")
-	f.write("	rlt2[(i,l) in arcs_il], sum(w[(i,l,j)] for j in outputs_from_pool[l]) <= cap_l[l]*q[(i,l)] \n\n")
-	f.write("end) \n\n\n")
-
-	f.write("@NLconstraint(m, blin[(i,l,j) in arcs_ilj], w[(i,l,j)] == q[(i,l)]*x_lj[(l,j)]) \n\n\n")
-
-
-	f.write("# ----- Objective ----- #\n")
-	f.write("@objective(m, Min, sum(cost_ij[i,j]*x_ij[(i,j)] for (i,j) in arcs_ij) + sum(cost_il[i,l]*x_il[(i,l)] for (i,l) in arcs_il) + sum(cost_lj[l,j]*x_lj[(l,j)] for (l,j) in arcs_lj) ) \n")
-	
+	f.write("gamma_up = " + str(gamma_up) + "\n\n")
 		
 	f.close()
 

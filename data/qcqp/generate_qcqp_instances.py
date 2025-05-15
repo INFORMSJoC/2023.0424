@@ -12,8 +12,13 @@ args = parser.parse_args()
 numVariables = int(args.numVariables)
 numInstances = int(args.numInstances)
 
-instances_path = "./n=" + str(numVariables) + "/"
-os.makedirs(instances_path, exist_ok=True)
+instances_path = "./n=" + str(numVariables) + "/instances/"
+qcqp_path = instances_path + "qcqp/"
+json_path = instances_path + "json/"
+mccormick_path = instances_path + "mccormick/"
+os.makedirs(qcqp_path, exist_ok=True)
+os.makedirs(json_path, exist_ok=True)
+os.makedirs(mccormick_path, exist_ok=True)
 
 # random seed for instances
 if numVariables == 10:
@@ -164,8 +169,9 @@ for i in range(numQuadConPert):
 
 # GENERATE PERTURBED INSTANCES
 for inst in range(start,numInstances+start):
-	output_file = instances_path + "qcqp_v" + str(numVariables) + "_b" + str(numBilinearTerms) + "_q" + str(numQuadraticTerms) + "_s" + str(round(constraint_sparsity*100)) + "_" + str(inst) + ".jl"
-	json_file = instances_path + "qcqp_v" + str(numVariables) + "_b" + str(numBilinearTerms) + "_q" + str(numQuadraticTerms) + "_s" + str(round(constraint_sparsity*100)) + "_" + str(inst) + ".json"
+	output_file = qcqp_path + "qcqp_v" + str(numVariables) + "_b" + str(numBilinearTerms) + "_q" + str(numQuadraticTerms) + "_s" + str(round(constraint_sparsity*100)) + "_" + str(inst) + ".jl"
+	mccormick_file = mccormick_path + "qcqp_v" + str(numVariables) + "_b" + str(numBilinearTerms) + "_q" + str(numQuadraticTerms) + "_s" + str(round(constraint_sparsity*100)) + "_" + str(inst) + "_mccormick.jl"
+	json_file = json_path + "qcqp_v" + str(numVariables) + "_b" + str(numBilinearTerms) + "_q" + str(numQuadraticTerms) + "_s" + str(round(constraint_sparsity*100)) + "_" + str(inst) + ".json"
 
 	json_dict = {}
 	json_dict["numVariables"] = numVariables
@@ -197,27 +203,42 @@ for inst in range(start,numInstances+start):
 
 # STORE SPARSITY PATTERN AND INITIALIZE DATA
 	f = open(output_file, "w")
+	f2 = open(mccormick_file, "w")
 
 	f.write("# ----- Bilinear Terms ----- #\n")
 	f.write("numBilinearTerms = " + str(numBilinearTerms) + "\n")
 	f.write("bilinear_terms = [")
+	f2.write("# ----- Bilinear Terms ----- #\n")
+	f2.write("numBilinearTerms = " + str(numBilinearTerms) + "\n")
+	f2.write("bilinear_terms = [")
 	count_bilinear = 0
 	for term in bilinear_terms:
 		f.write("[" + str(term[0]+1) + "," + str(term[1]+1) + "]")
+		f2.write("[" + str(term[0]+1) + "," + str(term[1]+1) + "]")
 		count_bilinear += 1
 		if count_bilinear < numBilinearTerms:
 			f.write(", ")
+			f2.write(", ")
 		else:
 			f.write("] \n\n")
+			f2.write("] \n\n")
 
 	
 	f.write("# ----- Quadratic Terms ----- #\n")
 	f.write("numQuadraticTerms = " + str(numQuadraticTerms) + "\n")
 	f.write("quadratic_terms = " + str([term+1 for term in quadratic_terms]) + "\n\n")
 	
+	f2.write("# ----- Quadratic Terms ----- #\n")
+	f2.write("numQuadraticTerms = " + str(numQuadraticTerms) + "\n")
+	f2.write("quadratic_terms = " + str([term+1 for term in quadratic_terms]) + "\n\n")
+	
 	f.write("numQuadNonZero = " + str(numQuadNonZero) + "\n")
 	f.write("numQuadNonZero2 = " + str(numQuadNonZero2) + "\n")
 	f.write("numLinNonZero = " + str(numLinNonZero) + "\n\n")
+
+	f2.write("numQuadNonZero = " + str(numQuadNonZero) + "\n")
+	f2.write("numQuadNonZero2 = " + str(numQuadNonZero2) + "\n")
+	f2.write("numLinNonZero = " + str(numLinNonZero) + "\n\n")
 
 	f.write("# ----- Data Matrices ----- #\n")
 	f.write("bilinear_obj_coeffs = zeros(Float64," + str(numBilinearTerms) + ") \n")
@@ -232,16 +253,44 @@ for inst in range(start,numInstances+start):
 	f.write("linear_con_coeffs_2 = zeros(Float64," + str(numLinearConstraints) + "," + str(numVariables) + ") \n")
 	f.write("linear_con_coeff_indices_2 = zeros(Int64," + str(numLinearConstraints) + "," + str(numVariables) + ") \n\n")
 
+	f2.write("# ----- Data Matrices ----- #\n")
+	f2.write("bilinear_obj_coeffs = zeros(Float64," + str(numBilinearTerms) + ") \n")
+	f2.write("bilinear_con_coeffs = zeros(Float64," + str(numQuadraticConstraints) + "," + str(numQuadNonZero) + ") \n")
+	f2.write("bilinear_con_coeff_indices = zeros(Int64," + str(numQuadraticConstraints) + "," + str(numQuadNonZero) + ") \n")
+	f2.write("quadratic_obj_coeffs = zeros(Float64," + str(numQuadraticTerms) + ") \n")
+	f2.write("quadratic_con_coeffs = zeros(Float64," + str(numQuadraticConstraints) + "," + str(numQuadNonZero2) + ") \n")
+	f2.write("quadratic_con_coeff_indices = zeros(Int64," + str(numQuadraticConstraints) + "," + str(numQuadNonZero2) + ") \n")
+	f2.write("linear_obj_coeffs = zeros(Float64," + str(numVariables) + ") \n")
+	f2.write("linear_con_coeffs_1 = zeros(Float64," + str(numQuadraticConstraints) + "," + str(numLinNonZero) + ") \n")
+	f2.write("linear_con_coeff_indices_1 = zeros(Int64," + str(numQuadraticConstraints) + "," + str(numLinNonZero) + ") \n")
+	f2.write("linear_con_coeffs_2 = zeros(Float64," + str(numLinearConstraints) + "," + str(numVariables) + ") \n")
+	f2.write("linear_con_coeff_indices_2 = zeros(Int64," + str(numLinearConstraints) + "," + str(numVariables) + ") \n\n")
+
 	f.write("# ----- Variables ----- #\n")
 	f.write("@variable(m, 0 <= x[1:" + str(numVariables) + "] <= 1)\n")
 	f.write("@variable(m, 0 <= w[1:" + str(numBilinearTerms) + "] <= 1)\n")
 	f.write("@variable(m, 0 <= v[1:" + str(numQuadraticTerms) + "] <= 1)\n\n")
 
+	f2.write("# ----- Variables ----- #\n")
+	f2.write("@variable(m, 0 <= x[1:" + str(numVariables) + "] <= 1)\n")
+	f2.write("@variable(m, 0 <= w[1:" + str(numBilinearTerms) + "] <= 1)\n\n")
+	f2.write("@variable(m, 0 <= v[1:" + str(numQuadraticTerms) + "] <= 1)\n\n")
+
 	f.write("# ----- Bilinear Equations ----- #\n")
 	f.write("@NLconstraint(m, [i=1:" + str(numBilinearTerms) + "], w[i] == x[bilinear_terms[i][1]]*x[bilinear_terms[i][2]])\n\n\n")
 
+	f2.write("# ----- McCormick Relaxations ----- #\n")
+	f2.write("@constraint(m, [i=1:" + str(numBilinearTerms) + "], w[i] >= 0)\n")
+	f2.write("@constraint(m, [i=1:" + str(numBilinearTerms) + "], w[i] >= x[bilinear_terms[i][1]] + x[bilinear_terms[i][2]] - 1)\n")
+	f2.write("@constraint(m, [i=1:" + str(numBilinearTerms) + "], w[i] <= x[bilinear_terms[i][2]])\n")
+	f2.write("@constraint(m, [i=1:" + str(numBilinearTerms) + "], w[i] <= x[bilinear_terms[i][1]])\n\n\n")
+
 	f.write("# ----- Quadratic Equations ----- #\n")
 	f.write("@NLconstraint(m, [i=1:" + str(numQuadraticTerms) + "], v[i] == (x[quadratic_terms[i]])^2)\n\n\n")
+
+	f2.write("# ----- McCormick Relaxations ----- #\n")
+	f2.write("@constraint(m, [i=1:" + str(numQuadraticTerms) + "], v[i] >= (x[quadratic_terms[i]])^2)\n")
+	f2.write("@constraint(m, [i=1:" + str(numQuadraticTerms) + "], v[i] <= x[quadratic_terms[i]])\n\n\n")
 
 	json_dict["x_lower"] = [0 for i in range(numVariables)]
 	json_dict["x_upper"] = [1 for i in range(numVariables)]
@@ -277,8 +326,16 @@ for inst in range(start,numInstances+start):
 	f.write("quadratic_obj_coeffs = " + str(R) + "\n")
 	f.write("linear_obj_coeffs = " + str(q) + "\n")
 
+	f2.write("# ----- Objective ----- #\n")
+	f2.write("bilinear_obj_coeffs = " + str(Q) + "\n")
+	f2.write("quadratic_obj_coeffs = " + str(R) + "\n")
+	f2.write("linear_obj_coeffs = " + str(q) + "\n")
+
 	f.write("\n")
 	f.write("@objective(m, Min, sum(bilinear_obj_coeffs[i]*w[i] for i = 1:" + str(numBilinearTerms) + ") + sum(quadratic_obj_coeffs[i]*v[i] for i = 1:" + str(numQuadraticTerms) + ") + sum(linear_obj_coeffs[i]*x[i] for i = 1:" + str(numVariables) + ")) \n\n\n")
+
+	f2.write("\n")
+	f2.write("@objective(m, Min, sum(bilinear_obj_coeffs[i]*w[i] for i = 1:" + str(numBilinearTerms) + ") + sum(quadratic_obj_coeffs[i]*v[i] for i = 1:" + str(numQuadraticTerms) + ") + sum(linear_obj_coeffs[i]*x[i] for i = 1:" + str(numVariables) + ")) \n\n\n")
 
 
 	bilinear_obj_matrix = np.zeros((numVariables, numVariables))
@@ -293,6 +350,7 @@ for inst in range(start,numInstances+start):
 
 # QUADRATIC CONSTRAINTS
 	f.write("# ----- Constraints ----- #\n")
+	f2.write("# ----- Constraints ----- #\n")
 
 	json_dict["quadratic_con_rhs"] = [1.0 for i in range(numQuadraticConstraints)]
 
@@ -345,7 +403,17 @@ for inst in range(start,numInstances+start):
 		f.write("linear_con_coeff_indices_1[" + str(count_lin_con) + ",:] = " + str(q_ind) + "\n")
 		f.write("\n")
 
+		f2.write("bilinear_con_coeffs[" + str(count_quad_con) + ",:] = " + str(Q) + "\n")
+		f2.write("bilinear_con_coeff_indices[" + str(count_quad_con) + ",:] = " + str(Q_ind) + "\n")
+		f2.write("quadratic_con_coeffs[" + str(count_quad_con) + ",:] = " + str(R) + "\n")
+		f2.write("quadratic_con_coeff_indices[" + str(count_quad_con) + ",:] = " + str(R_ind) + "\n")
+		f2.write("linear_con_coeffs_1[" + str(count_lin_con) + ",:] = " + str(q) + "\n")
+		f2.write("linear_con_coeff_indices_1[" + str(count_lin_con) + ",:] = " + str(q_ind) + "\n")
+		f2.write("\n")
+
 		f.write("@constraint(m, sum(bilinear_con_coeffs[" + str(count_quad_con) + ",i]*w[bilinear_con_coeff_indices[" + str(count_quad_con) + ",i]] for i = 1:" + str(numQuadNonZero) + ") + sum(quadratic_con_coeffs[" + str(count_quad_con) + ",i]*v[quadratic_con_coeff_indices[" + str(count_quad_con) + ",i]] for i = 1:" + str(numQuadNonZero2) + ") + sum(linear_con_coeffs_1[" + str(count_lin_con) + ",i]*x[linear_con_coeff_indices_1[" + str(count_lin_con) + ",i]] for i = 1:" + str(numLinNonZero) + ") <= 1) \n\n\n")
+
+		f2.write("@constraint(m, sum(bilinear_con_coeffs[" + str(count_quad_con) + ",i]*w[bilinear_con_coeff_indices[" + str(count_quad_con) + ",i]] for i = 1:" + str(numQuadNonZero) + ") + sum(quadratic_con_coeffs[" + str(count_quad_con) + ",i]*v[quadratic_con_coeff_indices[" + str(count_quad_con) + ",i]] for i = 1:" + str(numQuadNonZero2) + ") + sum(linear_con_coeffs_1[" + str(count_lin_con) + ",i]*x[linear_con_coeff_indices_1[" + str(count_lin_con) + ",i]] for i = 1:" + str(numLinNonZero) + ") <= 1) \n\n\n")
 
 
 		bilinear_con_matrix = np.zeros((numVariables, numVariables))
@@ -381,6 +449,10 @@ for inst in range(start,numInstances+start):
 		f.write("linear_con_coeffs_2[" + str(count_lin_con - numQuadraticConstraints) + ",:] = " + str(q) + "\n")
 		f.write("linear_con_coeff_indices_2[" + str(count_lin_con - numQuadraticConstraints) + ",:] = " + str(q_ind) + "\n")
 		f.write("\n")
+
+		f2.write("linear_con_coeffs_2[" + str(count_lin_con - numQuadraticConstraints) + ",:] = " + str(q) + "\n")
+		f2.write("linear_con_coeff_indices_2[" + str(count_lin_con - numQuadraticConstraints) + ",:] = " + str(q_ind) + "\n")
+		f2.write("\n")
 
 		f.write("@constraint(m, sum(linear_con_coeffs_2[" + str(count_lin_con - numQuadraticConstraints) + ",i]*x[linear_con_coeff_indices_2[" + str(count_lin_con - numQuadraticConstraints) + ",i]] for i = 1:" + str(numVariables) + ") == 1) \n\n\n")
 		
