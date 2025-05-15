@@ -11,7 +11,12 @@
   doi = {10.1287/ijoc.2023.0424},
 }
 ```
-The remainder of this README file is reproduced from the original Alpine README.
+Key modifications include:
+- Changes to `algorithm.jl` and `multi.jl` to enable calculation of sensitivities for strong partitioning.
+- Changes to `amp.jl` to implement strong partitioning (Algorithm 3 in the paper).
+- Changes to `solver.jl` to include several new solver options related to strong partitioning.
+
+**The remainder of this README file is reproduced from the original Alpine README.**
 
 
 "ALPINE: glob(AL) o(P)timization for mixed-(I)nteger programs with (N)onlinear (E)quations", is a novel global optimization solver that uses an adaptive, piecewise convexification scheme and constraint programming methods to solve non-convex Mixed-Integer Non-Linear Programs (MINLPs) efficiently. MINLPs are typically "hard" optimization problems which appear in numerous applications (see [MINLPLib.jl](https://github.com/lanl-ansi/MINLPLib.jl)). 

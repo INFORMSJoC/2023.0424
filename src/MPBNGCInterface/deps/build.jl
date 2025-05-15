@@ -35,11 +35,11 @@ function get_mpbngc(dir_of_deps::String)
 		FILEN="mpbngc"
 		URL = "http://napsu.karmitsa.fi/proxbundle/pb/"*"$FILEN"*".tar.gz"
 		run(`"$mkdir" "-p" "$dir_of_deps/usr"`)
-#		run(`"wget" "-P" "$dir_of_deps/usr" "$URL"`)
-#		run(`"tar" "xvzf" "$dir_of_deps/usr/$FILEN.tar.gz" -C "$dir_of_deps/usr"`)
+		run(`"wget" "-P" "$dir_of_deps/usr" "$URL"`)
+		run(`"tar" "xvzf" "$dir_of_deps/usr/$FILEN.tar.gz" -C "$dir_of_deps/usr"`)
 
-#		run(`"mkdir" "-p" "$dir_of_deps/usr/downloads"`)
-#		run(`"mv" "$dir_of_deps/usr/$FILEN.tar.gz" "$dir_of_deps/usr/downloads"`)
+		run(`"mkdir" "-p" "$dir_of_deps/usr/downloads"`)
+		run(`"mv" "$dir_of_deps/usr/$FILEN.tar.gz" "$dir_of_deps/usr/downloads"`)
 	end
 	
 	return nothing
