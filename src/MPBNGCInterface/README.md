@@ -11,6 +11,8 @@
   doi = {10.1287/ijoc.2023.0424},
 }
 ```
+In particular, the function fasg_ in the script `Mpbngc.jl` is modified to return the stopping criterion `eps` used by MPBNGC.
+
 The remainder of this README file is reproduced from the original MPBNGCInterface README.
 
 
